@@ -9,6 +9,8 @@
 
 
 import os
+from icecream import ic
+ic.configureOutput(includeContext=True)
 
 
 def is_valid(input_file):
@@ -27,6 +29,7 @@ def count_brackets(input_file, input_bracket, save_profile=False) -> int:
     close_bracket = bracket_types[input_bracket][1]
     bracket_profile = {open_bracket: 0, close_bracket: 0, "lines": ""}
     if input_bracket == "curly":
+        ic(input_bracket)
         for i, line in enumerate(content):
             if line.strip().startswith("#"):
                 continue
@@ -37,6 +40,7 @@ def count_brackets(input_file, input_bracket, save_profile=False) -> int:
                 bracket_profile["lines"] += f"{i+1} |  {line.replace(' ', '.')}"
                 bracket_profile[close_bracket] += 1
     else:
+        ic(input_bracket)
         for i, line in enumerate(content):
             if line.strip().startswith("#"):
                 continue
@@ -45,18 +49,25 @@ def count_brackets(input_file, input_bracket, save_profile=False) -> int:
                 close_count = line.count(close_bracket)
                 bracket_profile[open_bracket] += open_count
                 bracket_profile[close_bracket] += close_count
-                bracket_profile["lines"] += f"{i+1} [{open_count}:{close_count}] |  {line}"
+
+                if open_count != close_count:
+                    bracket_profile["lines"] += f"{i+1} [{open_count}:{close_count}]* |  {line}"
+                else:
+                    bracket_profile["lines"] += f"{i+1} [{open_count}:{close_count}] |  {line}"
 
     bracket_count = bracket_profile[open_bracket] + bracket_profile[close_bracket]
     output = ""
-    if not bracket_count % 2 == 0:
+    if not bracket_count % 2 == 0 or save_profile:
         output += f"Total Bracket Count: {bracket_count}\n"
         output += f"\t'{open_bracket}': {bracket_profile[open_bracket]}\n"
         output += f"\t'{close_bracket}': {bracket_profile[close_bracket]}\n\n"
+        output += f"=====================================================\n\n"
         output += bracket_profile["lines"]
         print(output)
 
     if save_profile:
+        ic(save_profile)
+        ic(output)
         if not os.path.isdir(save_profile):
             os.mkdir(save_profile)
         

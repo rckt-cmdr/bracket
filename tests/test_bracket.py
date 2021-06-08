@@ -27,6 +27,12 @@ def test_0_validate_file(afsim_file):
 
 
 def test_1_check_curly_brackets(afsim_file):
-    brackets = ["curly", "round", "square"]
-    for item in brackets:
-        assert bracket.count_brackets(afsim_file, item, save_profile="output") % 2 == 0
+    assert bracket.count_brackets(afsim_file, "curly", save_profile="output") % 2 == 0
+
+
+def test_2_check_round_brackets(afsim_file):
+    assert bracket.count_brackets(afsim_file, "round", save_profile="output") % 2 == 0
+
+
+def test_3_check_square_brackets(afsim_file):
+    assert bracket.count_brackets(afsim_file, "square", save_profile="output") % 2 == 0
