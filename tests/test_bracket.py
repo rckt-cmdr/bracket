@@ -27,24 +27,23 @@ def test_0_validate_file(source_code_file):
 
 
 def test_1_check_angle_brackets(source_code_file):
-    assert bracket.analyze(source_code_file, "angle", save_profile="output") % 2 == 0
+    assert bracket.analyze(source_code_file, "angle", save_profile="output")
 
 
 def test_2_check_curly_brackets(source_code_file):
-    assert bracket.analyze(source_code_file, "curly", save_profile="output") % 2 == 0
+    assert bracket.analyze(source_code_file, "curly", save_profile="output")
 
 
 def test_3_check_round_brackets(source_code_file):
-    assert bracket.analyze(source_code_file, "round", save_profile="output") % 2 == 0
+    assert bracket.analyze(source_code_file, "round", save_profile="output")
 
 
 def test_4_check_square_brackets(source_code_file):
-    assert bracket.analyze(source_code_file, "square", save_profile="output") % 2 == 0
+    assert bracket.analyze(source_code_file, "square", save_profile="output")
 
 
 def test_5_check_single_quotes(source_code_file):
-    assert bracket.analyze(source_code_file, "single", save_profile="output") % 2 == 0
-
+    assert bracket.analyze(source_code_file, "single", save_profile="output")
 
 def test_6_check_double_quotes(source_code_file):
-    assert bracket.analyze(source_code_file, "double", save_profile="output") % 2 == 0
+    assert bracket.analyze(source_code_file, "double", save_profile="output")

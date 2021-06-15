@@ -15,7 +15,7 @@ def is_valid(input_file):
     return os.path.isfile(input_file)
 
 
-def analyze(input_file, input_bracket, save_profile=False) -> int:
+def analyze(input_file, input_bracket, save_profile=False) -> bool:
     with open(input_file, "r") as file:
         content = file.readlines()
 
@@ -56,7 +56,7 @@ def analyze(input_file, input_bracket, save_profile=False) -> int:
         with open(file_name, "w") as file:
             file.write(output)
 
-    return bracket_count
+    return True
 
 
 def count_curly_brackets(content) -> dict:
