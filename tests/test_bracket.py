@@ -13,7 +13,7 @@ from bracket import __version__
 
 @pytest.fixture()
 def source_code_file():
-    proj_dir = os.path.abspath("</project/dir")
+    proj_dir = os.path.abspath("</project/dir>")
     return os.path.join(proj_dir, "<source_file>")
 
 

@@ -8,7 +8,7 @@ On lines 16 and 17, update the `pytest.fixture()` to point to your source file:
 ```python
 @pytest.fixture()
 def source_code_file():
-    proj_dir = os.path.abspath("</project/dir")
+    proj_dir = os.path.abspath("</project/dir>")
     return os.path.join(proj_dir, "<source_file>")
 ```
 
