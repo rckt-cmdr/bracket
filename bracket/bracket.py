@@ -8,10 +8,7 @@
 #              formatting irregularities)
 
 
-import bracket
 import os
-from icecream import ic
-ic.configureOutput(includeContext=True)
 
 
 def is_valid(input_file):
@@ -25,7 +22,6 @@ def analyze(input_file, input_bracket, save_profile=False) -> int:
     open_bracket = f"{input_bracket}_left"
     close_bracket = f"{input_bracket}_right"
     if input_bracket == "curly":
-        ic(input_bracket)
         analysis_profile = count_curly_brackets(content)
         bracket_count = analysis_profile[open_bracket] + analysis_profile[close_bracket]
         description = "bracket"
@@ -53,8 +49,6 @@ def analyze(input_file, input_bracket, save_profile=False) -> int:
         print(output)
 
     if save_profile:
-        ic(save_profile)
-        ic(output)
         if not os.path.isdir(save_profile):
             os.mkdir(save_profile)
         
